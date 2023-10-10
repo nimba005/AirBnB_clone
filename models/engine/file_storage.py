@@ -3,14 +3,9 @@
 """serialization and deserialization of instances"""
 
 from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.place import Place
-from models.review import Review
 import os
 import json
+import models
 
 
 class FileStorage:
@@ -29,7 +24,7 @@ class FileStorage:
 
     def save(self):
         """serializes objs to json files"""
-        with open(self.__file_path,"w") as f:
+        with open(FileStorage.__file_path, "w") as f:
             json.dump(self.__objects, f)
 
     def reload(self):
