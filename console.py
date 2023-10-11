@@ -21,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
         elif arg not in HBNBCommand.classes:
             print("** class doesn't exist **")
         else:
-            new_instance = eval(args)()
+            new_instance = eval(arg)()
             new_instance.save()
             print(new_instance.id)
 
@@ -41,20 +41,22 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self,arg):
         """representation of an instance of basemodel"""
-        if not arg:
-            print("** class name missing **")
+        args = arg.split()
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+
+        class_name = args[0]
+        instance_id = args[1]
+        key = "{}.{}".format(class_name, instance_id)
+
+        objects = storage.all()
+        value = objects.get(key, None)
+
+        if value is None:
+            print("** no instance found **")
         else:
-            arg = arg.split()
-            if arg[0] not in HBNBCommand.classes:
-                print("** class doesn't exist **")
-            elif len(arg) != 2:
-                print("** instance id missing **")
-            else:
-                for key, value in storage.all().items():
-                    if arg[1] == value.id:
-                        print(value)
-                        return
-                print("** no instance found **")
+            print(value)
 
     def do_destroy(self, arg):
         """deletes an instance based on a class"""
@@ -89,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
             objects = storage.all()
             instances = []
             for key, value in  objects.items():
-                obj_name == value.__class__.__name__
+                obj_name = value.__class__.__name__
 
                 if obj_name == arg[0]:
                     instances += [value.__str__()]
