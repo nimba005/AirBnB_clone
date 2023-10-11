@@ -3,6 +3,8 @@
 """The ABNB console command interpreter"""
 
 import cmd
+from shlex import split
+import re
 from models import storage
 from models.base_model import BaseModel
 
@@ -10,6 +12,7 @@ from models.base_model import BaseModel
 class HBNBCommand(cmd.Cmd):
     """defines the hbnb interpreter"""
     prompt = "(hbnb) "
+    classes = {"BaseModel"}
 
     def do_create(self, arg):
         """creates a new instance of base model"""
@@ -41,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
         else:
-            arg = args.split()
+            arg = arg.split()
             if arg[0] not in HBNBCommand.classes:
                 print("** class doesn't exist **")
             elif len(arg) != 2:
