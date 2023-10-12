@@ -15,7 +15,7 @@ class BaseModel:
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
 
-        date_format = "%Y-%m-%dT%H:%s:%f"
+        date_format = "%Y-%m-%dT%H:%M:%S.%f"
 
         if kwargs:
             for key, value in kwargs.items():
