@@ -18,8 +18,8 @@ from models.state import State
 class HBNBCommand(cmd.Cmd):
     """defines the hbnb interpreter"""
     prompt = "(hbnb) "
-    classes = {"BaseModel","User", "State",
-            "City", "Amenity", "Place", "Review"}
+    classes = {"BaseModel", "User", "State",
+               "City", "Amenity", "Place", "Review"}
 
     def do_create(self, arg):
         """creates a new instance of base model"""
@@ -100,8 +100,7 @@ class HBNBCommand(cmd.Cmd):
                         )
             print(count)
 
-
-    def do_show(self,arg):
+    def do_show(self, arg):
         """representation of an instance of basemodel"""
         args = arg.split()
         if len(args) < 2:
@@ -137,8 +136,8 @@ class HBNBCommand(cmd.Cmd):
                 del storage.all()[key]
                 storage.save()
                 return
-            print("** no instance found **") 
-            
+            print("** no instance found **")
+
     def do_all(self, arg):
         """string representation of a class instance"""
         args = split(arg)
@@ -161,7 +160,6 @@ class HBNBCommand(cmd.Cmd):
                     if key.startswith(arg[0])]
                 strs = [str(obj) for obj in class_objs]
                 print(strs)
-
 
     def do_destroy(self, arg):
         """destroy an instance based on his ID"""
