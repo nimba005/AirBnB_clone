@@ -9,6 +9,7 @@ from models.base_model import BaseModel
 import models
 import datetime
 
+
 class TestAmenity(unittest.TestCase):
     """instances of a method unittests"""
     am = Amenity()

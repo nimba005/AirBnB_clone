@@ -24,7 +24,8 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(self.user, BaseModel)
 
     def test_user_str(self):
-        expected_str = "[User] ({}) {}".format(self.user.id, self.user.__dict__)
+        expected_str = "[User] ({}) {}".format(
+                self.user.id, self.user.__dict__)
         self.assertEqual(str(self.user), expected_str)
 
     def __str__(self):

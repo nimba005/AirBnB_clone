@@ -8,6 +8,7 @@ from models.base_model import BaseModel
 import models
 import datetime
 
+
 class TestPlace(unittest.TestCase):
     """amenity class unittests"""
     place = Place()
@@ -49,6 +50,7 @@ class TestPlace(unittest.TestCase):
         self.assertIsInstance(self.place.id, str)
         self.assertIsInstance(self.place.created_at, datetime.datetime)
         self.assertIsInstance(self.place.updated_at, datetime.datetime)
+
 
 if __name__ == '__main__':
     unittest.main()

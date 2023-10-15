@@ -3,6 +3,7 @@ from models.city import City
 from models.base_model import BaseModel
 import models
 
+
 class TestCity(unittest.TestCase):
     def setUp(self):
         self.city = City()
@@ -19,7 +20,8 @@ class TestCity(unittest.TestCase):
         self.assertIsInstance(self.city, BaseModel)
 
     def test_city_str_method(self):
-        expected_str = "[City] ({}) {}".format(self.city.id, self.city.__dict__)
+        expected_str = "[City] ({}) {}".format(
+                self.city.id, self.city.__dict__)
         self.assertEqual(str(self.city), expected_str)
 
     def test_city_to_dict_method(self):
@@ -35,6 +37,6 @@ class TestCity(unittest.TestCase):
             self.city.save()
             mock_save.assert_called_once()
 
+
 if __name__ == '__main__':
     unittest.main()
-
